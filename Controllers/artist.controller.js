@@ -7,33 +7,40 @@ class ArtistController {
 	}
 
 	list = async (req, res) => {
-		const result = await model.list(req, res);
-		res.json(result);
+		const [result, err] = await model.list(req, res);
+		if (err) res.status(err.status).json(err.message);
+		else res.status(200).json({ resultCount: result.length, items: result });
 	};
 
 	search = async (req, res) => {
-		const result = await model.search(req, res);
-		res.json({ resultCount: result.length, items: result });
+		const [result, err] = await model.search(req, res);
+		if (err) res.status(err.status).send(err.message);
+		else res.status(200).json({ resultCount: result.length, items: result });
 	};
 
 	get = async (req, res) => {
-		const result = await model.get(req, res);
-		res.json(result);
+		const [result, err] = await model.get(req, res);
+		if (err) res.status(err.status).send(err.message);
+		else res.status(200).json(...result);
 	};
 
 	create = async (req, res) => {
-		const result = await model.create(req, res);
-		res.json({ status: "OK", id: result.insertId });
+		const [result, err] = await model.create(req, res);
+		if (err) res.status(err.status).send(err.message);
+		else
+			res.status(200).json({ status: "OK", id: result.insertId, ...req.body });
 	};
 
 	update = async (req, res) => {
-		const result = await model.update(req, res);
-		res.json(result);
+		const [result, err] = await model.update(req, res);
+		if (err) res.status(err.status).send(err.message);
+		else res.status(200).json({ id: req.params.id, ...req.body });
 	};
 
 	delete = async (req, res) => {
-		const result = await model.delete(req, res);
-		res.json(result);
+		const [result, err] = await model.delete(req, res);
+		if (err) res.status(err.status).send(err.message);
+		else res.status(200).json({ status: "OK", id: req.params.id });
 	};
 }
 
