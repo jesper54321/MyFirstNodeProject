@@ -14,8 +14,16 @@ class ArtistModel {
 			const [result, meta] = await db.query(sql);
 			return [result, null];
 		} catch (err) {
-			console.error(err);
-			return [null, { techMessage: err, message: "", status: 400 }];
+			const error = await errorTesting(err.errno + ": " + err.code);
+			console.log(error);
+			return [
+				null,
+				{
+					techMessage: err,
+					message: error.message,
+					status: error.status || 400,
+				},
+			];
 		}
 	};
 
@@ -27,8 +35,16 @@ class ArtistModel {
 			const [result, meta] = await db.query(sql, [searchWords]);
 			return [result, null];
 		} catch (err) {
-			console.error(err);
-			return [null, { techMessage: err, message: "", status: 400 }];
+			const error = await errorTesting(err.errno + ": " + err.code);
+			console.log(error);
+			return [
+				null,
+				{
+					techMessage: err,
+					message: error.message,
+					status: error.status || 400,
+				},
+			];
 		}
 	};
 
@@ -40,8 +56,16 @@ class ArtistModel {
 			const [result, meta] = await db.query(sql, [req.params.id]);
 			return [result, null];
 		} catch (err) {
-			console.error(err);
-			return [null, { techMessage: err, message: "", status: 400 }];
+			const error = await errorTesting(err.errno + ": " + err.code);
+			console.log(error);
+			return [
+				null,
+				{
+					techMessage: err,
+					message: error.message,
+					status: error.status || 400,
+				},
+			];
 		}
 	};
 
@@ -53,8 +77,16 @@ class ArtistModel {
 			const [result, meta] = await db.query(sql, arrFormValues);
 			return [result, null];
 		} catch (err) {
-			console.error(err);
-			return [null, { techMessage: err, message: "", status: 400 }];
+			const error = await errorTesting(err.errno + ": " + err.code);
+			console.log(error);
+			return [
+				null,
+				{
+					techMessage: err,
+					message: error.message,
+					status: error.status || 400,
+				},
+			];
 		}
 	};
 
@@ -66,8 +98,16 @@ class ArtistModel {
 			const [result, meta] = await db.query(sql, arrFormValues);
 			return [result, null];
 		} catch (err) {
-			console.error(err);
-			return [null, { techMessage: err, message: "", status: 400 }];
+			const error = await errorTesting(err.errno + ": " + err.code);
+			console.log(error);
+			return [
+				null,
+				{
+					techMessage: err,
+					message: error.message,
+					status: error.status || 400,
+				},
+			];
 		}
 	};
 
@@ -77,8 +117,16 @@ class ArtistModel {
 			const [result, meta] = await db.query(sql, [req.params.id]);
 			return [result, null];
 		} catch (err) {
-			console.error(err);
-			return [null, { techMessage: err, message: "", status: 400 }];
+			const error = await errorTesting(err.errno + ": " + err.code);
+			console.log(error);
+			return [
+				null,
+				{
+					techMessage: err,
+					message: error.message,
+					status: error.status || 400,
+				},
+			];
 		}
 	};
 }

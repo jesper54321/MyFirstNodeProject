@@ -1,4 +1,5 @@
 import db from "../Config/db2.config.js";
+import errorTesting from "../Error_Handling/error.handler.js";
 
 class SongModel {
 	constructor() {
@@ -14,8 +15,16 @@ class SongModel {
 			const [result, meta] = await db.query(sql);
 			return [result, null];
 		} catch (err) {
-			console.error(err);
-			return [null, { techMessage: err, message: "", status: 400 }];
+			const error = await errorTesting(err.errno + ": " + err.code);
+			console.log(error);
+			return [
+				null,
+				{
+					techMessage: err,
+					message: error.message,
+					status: error.status || 400,
+				},
+			];
 		}
 	};
 
@@ -28,8 +37,16 @@ class SongModel {
 
 			return [result, null];
 		} catch (err) {
-			console.error(err);
-			return [null, { techMessage: err, message: "", status: 400 }];
+			const error = await errorTesting(err.errno + ": " + err.code);
+			console.log(error);
+			return [
+				null,
+				{
+					techMessage: err,
+					message: error.message,
+					status: error.status || 400,
+				},
+			];
 		}
 	};
 
@@ -44,8 +61,16 @@ class SongModel {
 
 			return [result, null];
 		} catch (err) {
-			console.error(err);
-			return [null, { techMessage: err, message: "", status: 400 }];
+			const error = await errorTesting(err.errno + ": " + err.code);
+			console.log(error);
+			return [
+				null,
+				{
+					techMessage: err,
+					message: error.message,
+					status: error.status || 400,
+				},
+			];
 		}
 	};
 
@@ -58,8 +83,16 @@ class SongModel {
 
 			return [result, null];
 		} catch (err) {
-			console.error(err);
-			return [null, { techMessage: err, message: "", status: 400 }];
+			const error = await errorTesting(err.errno + ": " + err.code);
+			console.log(error);
+			return [
+				null,
+				{
+					techMessage: err,
+					message: error.message,
+					status: error.status || 400,
+				},
+			];
 		}
 	};
 
@@ -72,8 +105,16 @@ class SongModel {
 
 			return [result, null];
 		} catch (err) {
-			console.error(err);
-			return [null, { techMessage: err, message: "", status: 400 }];
+			const error = await errorTesting(err.errno + ": " + err.code);
+			console.log(error);
+			return [
+				null,
+				{
+					techMessage: err,
+					message: error.message,
+					status: error.status || 400,
+				},
+			];
 		}
 	};
 
@@ -84,8 +125,16 @@ class SongModel {
 
 			return [result, null];
 		} catch (err) {
-			console.error(err);
-			return [null, { techMessage: err, message: "", status: 400 }];
+			const error = await errorTesting(err.errno + ": " + err.code);
+			console.log(error);
+			return [
+				null,
+				{
+					techMessage: err,
+					message: error.message,
+					status: error.status || 400,
+				},
+			];
 		}
 	};
 }
