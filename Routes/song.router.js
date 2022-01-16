@@ -1,5 +1,5 @@
 import express from "express";
-import SongController from "../Controllers/song.controller.js";
+import SongController from "../Controllers/song.controller.sql.js";
 
 const router = express.Router();
 const controller = new SongController();

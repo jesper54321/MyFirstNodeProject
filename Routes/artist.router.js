@@ -1,8 +1,8 @@
 import express from "express";
-import artistController from "../Controllers/artist.controller.js";
+import ArtistController from "../Controllers/artist.controller.sql.js";
 
 const router = express.Router();
-const controller = new artistController();
+const controller = new ArtistController();
 
 // Kalder routes med controller metoder
 router.get("/api/artists", (req, res) => {
